@@ -16,7 +16,7 @@ All requests to Lion must include the following headers:
 
 + Parameters
 
-	+ name (required, string) ... Project name
+  + name (required, string) ... Project name
 
 ### Get project [GET]
 
@@ -24,42 +24,42 @@ Fetch project details, given the projects' name.
 
 + Request (application/json)
 
-	+ Header
+    + Header
 
-		Lion-Api-Key: <YOUR_API_KEY>
-		Lion-Api-Secret: <YOUR_API_SECRET>
-		Lion-Api-Version: v1
+    Lion-Api-Key: <YOUR_API_KEY>
+    Lion-Api-Secret: <YOUR_API_SECRET>
+    Lion-Api-Version: v1
 
 + Response 200 (application/json)
 
-	+ Header
+  + Header
 
-		Lion-Api-Version: v1
+    Lion-Api-Version: v1
 
-	+ Body
+  + Body
 
-		{
-			"name": "Project name",
-			"resources": [
-				"resource1",
-				"..."
-			]
-		}
+    {
+      "name": "Project name",
+      "resources": [
+        "resource1",
+        "..."
+      ]
+    }
 
 + Response 401 (application/json)
 
-	+ Header
+  + Header
 
-		Lion-Api-Version: v1
+    Lion-Api-Version: v1
 
 + Response 403 (application/json)
 
-	+ Header
+  + Header
 
-		Lion-Api-Version: v1
+    Lion-Api-Version: v1
 
 + Response 404 (application/json)
 
-	+ Header
+  + Header
 
-		Lion-Api-Version: v1
+    Lion-Api-Version: v1
