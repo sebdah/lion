@@ -20,4 +20,9 @@ func TestIndex(t *testing.T) {
 		t.Errorf("Bad Lion-Api-Version header: '%v'",
 			w.Header().Get("Lion-Api-Version"))
 	}
+
+	if w.Header().Get("Content-Type") != "application/json" {
+		t.Errorf("Wrong Content-Type header: '%v'",
+			w.Header().Get("Content-Type"))
+	}
 }
