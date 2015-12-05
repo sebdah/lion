@@ -1,80 +1,65 @@
-FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
-
 # Lion API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Lion is a basic localization service using `git` as the backend for storing translations.
 
-## Questions Collection [/questions]
+## Request headers
 
-### List All Questions [GET]
+All requests to Lion must include the following headers:
 
-+ Response 200 (application/json)
+- `Lion-API-key`
+- `Lion-API-secret`
+- `Lion-API-version`
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+# Projects
 
-### Create a New Question [POST]
+## Project management [/project/{name}]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
++ Parameters
+
+	+ name (required, string) ... Project name
+
+### Get project [GET]
+
+Fetch project details, given the projects' name.
 
 + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+	+ Header
 
-+ Response 201 (application/json)
+		Lion-API-key: <YOUR_API_KEY>
+		Lion-API-secret: <YOUR_API_SECRET>
+		Lion-API-version: v1
 
-    + Headers
++ Response 200 (application/json)
 
-            Location: /questions/2
+	+ Header
 
-    + Body
+		Lion-API-version: v1
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+	+ Body
+
+		{
+			"name": "Project name",
+			"resources": [
+				"resource1",
+				"..."
+			]
+		}
+
++ Response 401 (application/json)
+
+	+ Header
+
+		Lion-API-version: v1
+
++ Response 403 (application/json)
+
+	+ Header
+
+		Lion-API-version: v1
+
++ Response 404 (application/json)
+
+	+ Header
+
+		Lion-API-version: v1
