@@ -22,7 +22,7 @@ func init() {
 	// Set up the viper object
 	Config = viper.New()
 	Config.SetConfigName("config")
-	Config.SetConfigType("yaml")
+	Config.SetConfigType("json")
 	Config.AddConfigPath(dir)
 
 	// Read the configuration
