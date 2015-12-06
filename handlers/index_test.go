@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIndex(t *testing.T) {
@@ -12,17 +14,7 @@ func TestIndex(t *testing.T) {
 	w := httptest.NewRecorder()
 	indexHandle.ServeHTTP(w, req)
 
-	if w.Code != http.StatusOK {
-		t.Errorf("Bad response code: %v", http.StatusOK)
-	}
-
-	if w.Header().Get("Lion-Api-Version") != "v1" {
-		t.Errorf("Bad Lion-Api-Version header: '%v'",
-			w.Header().Get("Lion-Api-Version"))
-	}
-
-	if w.Header().Get("Content-Type") != "application/json" {
-		t.Errorf("Wrong Content-Type header: '%v'",
-			w.Header().Get("Content-Type"))
-	}
+	assert.Equal(t, http.StatusOK, w.Code)
+	assert.Equal(t, "v1", w.Header().Get("Lion-Api-Version"))
+	assert.Equal(t, "application/json", w.Header().Get("Content-Type"))
 }
