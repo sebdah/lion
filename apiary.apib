@@ -6,8 +6,6 @@ Lion is a basic localization service using `git` as the backend for storing tran
 
 All requests to Lion must include the following headers:
 
-- `Lion-Api-Key`
-- `Lion-Api-Secret`
 - `Lion-Api-Version`
 
 # Group Projects
@@ -54,8 +52,6 @@ Fetch project details, given the projects' name.
 
     + Header
 
-              Lion-Api-Key: <YOUR_API_KEY>
-              Lion-Api-Secret: <YOUR_API_SECRET>
               Lion-Api-Version: v1
 
 + Response 200 (application/json)
@@ -73,18 +69,6 @@ Fetch project details, given the projects' name.
                   "..."
                 ]
               }
-
-+ Response 401 (application/json)
-
-    + Header
-
-              Lion-Api-Version: v1
-
-+ Response 403 (application/json)
-
-    + Header
-
-              Lion-Api-Version: v1
 
 + Response 404 (application/json)
 
