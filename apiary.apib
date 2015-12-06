@@ -4,9 +4,11 @@ Lion is a basic localization service using `git` as the backend for storing tran
 
 ## Request headers
 
-All requests to Lion must include the following headers:
+Requests should have the `Lion-Api-Version` header set. The current API version is `v1`. If the header is not set, it is assumed to be the latest version.
 
-- `Lion-Api-Version`
+Example header:
+
+- `Lion-Api-Version: v1`
 
 # Group Projects
 
