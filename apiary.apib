@@ -12,6 +12,34 @@ All requests to Lion must include the following headers:
 
 # Group Projects
 
+## Project collection [/projects]
+
+### List projects [GET]
+
+List all configured projects
+
++ Request (application/json)
+
+    + Header
+
+              Lion-Api-Version: v1
+
++ Response 200 (application/json)
+
+    + Header
+
+              Lion-Api-Version: v1
+
+    + Body
+
+              {
+                "projects": [
+                    "projectA": {
+                        "name" "projectA" // All project details
+                    }
+                ]
+              }
+
 ## Project management [/project/{name}]
 
 + Parameters
