@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+	"fmt"
 	"sort"
 
 	"github.com/sebdah/lion/config"
@@ -30,18 +32,27 @@ func PopulateAllProjectsFromConfig() []Project {
 
 	for _, p := range projectNames {
 		project := NewProject()
-		project.PopulateFromConfig(p)
+		_ = project.PopulateFromConfig(p)
 		projects = append(projects, *project)
 	}
 
 	return projects
 }
 
-func (p *Project) PopulateFromConfig(name string) {
+func (p *Project) PopulateFromConfig(name string) error {
+	var found = false
+
 	for project, _ := range config.Config.GetStringMapString("projects") {
 		if project == name {
 			p.Name = project
+			found = true
 			break
 		}
 	}
+
+	if !found {
+		return errors.New(fmt.Sprintf("Project %s not found", name))
+	}
+
+	return nil
 }

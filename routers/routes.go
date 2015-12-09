@@ -16,6 +16,7 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
+	Route{"ProjectGet", "GET", "/project/{project_name}", handlers.ProjectGet},
 	Route{"ProjectsList", "GET", "/projects", handlers.ProjectsList},
 	Route{"Index", "GET", "/", handlers.Index},
 }
