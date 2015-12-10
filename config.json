@@ -1,8 +1,17 @@
 {
   "port": 9000,
-  "projects": {
-    "android": {},
-    "ios": {},
-    "web": {}
-  }
+  "projects": [
+    {
+      "name": "Android",
+      "slug": "android"
+    },
+    {
+      "name": "iOS",
+      "slug": "ios"
+    },
+    {
+      "name": "Web project",
+      "slug": "web"
+    }
+  ]
 }

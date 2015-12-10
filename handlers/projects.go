@@ -5,17 +5,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/sebdah/lion/models"
+	"github.com/sebdah/lion/cfg"
 )
 
 func ProjectsList(w http.ResponseWriter, r *http.Request) {
-	var projects models.Projects
-
-	for _, project := range models.PopulateAllProjectsFromConfig() {
-		projects.Projects = append(projects.Projects, project)
-	}
-
-	js, err := json.Marshal(projects)
+	js, err := json.Marshal(cfg.Config.Projects)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -28,12 +22,10 @@ func ProjectsList(w http.ResponseWriter, r *http.Request) {
 }
 
 func ProjectGet(w http.ResponseWriter, r *http.Request) {
-	var project *models.Project
 	vars := mux.Vars(r)
 
-	project = models.NewProject()
-	err := project.PopulateFromConfig(vars["project_name"])
-	if err != nil {
+	project := cfg.Config.Projects.GetBySlug(vars["slug"])
+	if project == nil {
 		appendLionHeaders(w)
 		http.NotFound(w, r)
 		return

@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/op/go-logging"
-	"github.com/sebdah/lion/config"
+	"github.com/sebdah/lion/cfg"
 	"github.com/sebdah/lion/routers"
 )
 
@@ -25,7 +25,7 @@ func init() {
 func main() {
 	log.Info("Starting the Lion Service")
 
-	port := config.Config.GetInt("port")
+	port := cfg.Config.Port
 	router := routers.NewRouter()
 	log.Info("Starting the web server at port %d", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), router))
