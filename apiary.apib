@@ -36,15 +36,16 @@ List all configured projects
                 "projects": [
                     "projectA": {
                         "name" "projectA" // All project details
+                        ...
                     }
                 ]
               }
 
-## Project management [/project/{name}]
+## Project management [/project/{slug}]
 
 + Parameters
 
-    + name (required, string) ... Project name
+    + slug (required, string) ... Project slug
 
 ### Get project [GET]
 
@@ -66,6 +67,7 @@ Fetch project details, given the projects' name.
 
               {
                 "name": "Project name",
+                "slug": "project-name",
                 "resources": [
                   "resource1",
                   "..."
